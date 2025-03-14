@@ -1,7 +1,7 @@
 package LinkedList.Lec1.Basics;
 
 public class LinkedList {
-    public class Node {
+    public static class Node {
         public int val;
         public Node next;
         public Node(int val) {
@@ -12,12 +12,10 @@ public class LinkedList {
 
     // props
     public Node head, tail;
-    public int size;
 
     // constructor
     public LinkedList() {
         head = tail = null;
-        size = 0;
     }
 
     // public methods
@@ -30,7 +28,6 @@ public class LinkedList {
             tail.next = newNode;
             tail = tail.next;
         }
-        size++;
     }
 
     public void print() {
@@ -43,7 +40,24 @@ public class LinkedList {
         System.out.println();
     }
 
+    // to print LL from any given Head
+    public static void printAny(Node h1) {
+        Node trav = h1;
+        while(trav != null) {
+            System.out.print(trav.val);
+            if(trav.next != null) System.out.print(", ");
+            trav = trav.next;
+        }
+        System.out.println();
+    }
+
     public int size() {
+        int size = 0;
+        Node trav = head;
+        while(trav != null) {
+            trav = trav.next;
+            size++;
+        }
         return size;
     }
 }
