@@ -12,13 +12,12 @@ public class Memoize {
         }
         if(dp[i][j1][j2] != -1) return dp[i][j1][j2];
         int max = (int) -1e8;
-        boolean isSamePos = (j1 == j2);
         for(int dj1=-1; dj1<=1; dj1++) {
             for(int dj2=-1; dj2<=1; dj2++) {
                 max = Math.max(max, chocolatePickup(i+1, j1+dj1, j2+dj2, R, C, arr, dp));
             }
         }
-        if(isSamePos) max = arr[i][j1] + max;
+        if(j1 == j2) max = arr[i][j1] + max;
         else max = arr[i][j1] + arr[i][j2] + max;
         return dp[i][j1][j2] = max;
     }
