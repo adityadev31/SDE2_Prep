@@ -76,4 +76,10 @@ public class Board {
         board[srcPos.getX()][srcPos.getY()] = null;
         board[destPos.getX()][destPos.getY()] = piece;
     }
+
+    public boolean checkIfValidPosition(Position pos) {
+        int x = pos.getX();
+        int y = pos.getY();
+        return (x >= 0 && x < size && y >= 0 && y < size);
+    }
 }

@@ -64,6 +64,10 @@ public class GameService {
 
         // check if src position has curPlayer's piece
         if(!isCurrPlayerPiece(srcPos)) return;
+        if(!board.checkIfValidPosition(srcPos) || !board.checkIfValidPosition(destPos)) {
+            System.out.println("Invalid board position");
+            return;
+        }
         boolean moveResult = board.getPiece(srcPos).makeMove(board, srcPos, destPos);
         if(!moveResult) return;
         else changeCurrentPlayer();
