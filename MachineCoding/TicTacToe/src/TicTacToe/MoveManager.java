@@ -53,7 +53,23 @@ public class MoveManager {
             }
         }
         if(victory) {
-            for (int i = x, j = y; i >= 0 && j >= 0; i--, j--) {
+            for (int i=x, j=y; i>=0 && j>=0; i--, j--) {
+                if (board.getMark(new Position(i, j)) != mark) {
+                    victory = false;
+                    break;
+                }
+            }
+        }
+        if(victory) {
+            for (int i=x, j=y; i>=0 && j<board.size; i--, j++) {
+                if (board.getMark(new Position(i, j)) != mark) {
+                    victory = false;
+                    break;
+                }
+            }
+        }
+        if(victory) {
+            for (int i=x, j=y; i<board.size && j>=0; i++, j--) {
                 if (board.getMark(new Position(i, j)) != mark) {
                     victory = false;
                     break;
