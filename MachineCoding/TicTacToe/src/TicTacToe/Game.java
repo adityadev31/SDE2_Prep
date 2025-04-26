@@ -62,5 +62,9 @@ public class Game {
         initPlayers();
         initMoveManager();
         registerMoves();
+        System.out.println("Start again? Y/N: ");
+        String rematch = scn.next();
+        if(rematch.toLowerCase().equals("y")) start();
+        else return;
     }
 }
