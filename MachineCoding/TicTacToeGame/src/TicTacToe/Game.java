@@ -52,9 +52,11 @@ public class Game {
             MyPrinter.print("Wanna Start Over? y/n: ");
             char res = MyScanner.scn.next().toLowerCase().charAt(0);
             MyPrinter.println("");
-            if(res != 'y') return;
-            resetGame();
-            start();
+            if(res == 'y') {
+                resetGame();
+                start();
+            }
+            return;
         }
         if(moveResults == MoveResults.VALID) changePlayer();
         start();
