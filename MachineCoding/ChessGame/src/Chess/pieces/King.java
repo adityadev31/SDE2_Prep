@@ -12,7 +12,8 @@ public class King extends Piece {
     }
 
     @Override
-    public MoveResults makeMove(int x, int y, int x2, int y2, Board board) {
-        return null;
+    public MoveResults makeMove(int r1, int c1, int r2, int c2, Board board) {
+        if(Math.abs(r1-r2) > 1 || Math.abs(c1-c2) > 1) return MoveResults.INVALID;
+        return makeMoveResults(r1,c1,r2,c2,board);
     }
 }

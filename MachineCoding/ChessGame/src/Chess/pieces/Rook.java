@@ -13,39 +13,40 @@ public class Rook extends Piece {
     }
 
     @Override
-    public MoveResults makeMove(int x1, int y1, int x2, int y2, Board board) {
+    public MoveResults makeMove(int r1, int c1, int r2, int c2, Board board) {
+        boolean validMove = false;
         // up
-        if(x2<x1 && y1==y2) {
-            for(int k=x1-1; k>x2; k--) {
-                if(board.getPiece(k, y1)!=null) return MoveResults.INVALID;
+        if(r2<r1 && c1==c2) {
+            for(int k=r1-1; k>r2; k--) {
+                if(board.getPiece(k, c1)!=null) return MoveResults.INVALID;
             }
-            return makeMoveResults(x1,y1,x2,y2,board);
+            validMove = true;
         }
 
         // down
-        else if(x2>x1 && y1==y2) {
-            for(int k=x1+1; k<x2; k++) {
-                if(board.getPiece(k, y1)!=null) return MoveResults.INVALID;
+        else if(r2>r1 && c1==c2) {
+            for(int k=r1+1; k<r2; k++) {
+                if(board.getPiece(k, c1)!=null) return MoveResults.INVALID;
             }
-            return makeMoveResults(x1,y1,x2,y2,board);
+            validMove = true;
         }
 
         // left
-        else if(x1==x2 && y1<y2) {
-            for(int k=y1+1; k<y2; k++) {
-                if(board.getPiece(x1, k)!=null) return MoveResults.INVALID;
+        else if(r1==r2 && c1<c2) {
+            for(int k=c1+1; k<c2; k++) {
+                if(board.getPiece(r1, k)!=null) return MoveResults.INVALID;
             }
-            return makeMoveResults(x1,y1,x2,y2,board);
+            validMove = true;
         }
 
         // right
-        else if(x1==x2 && y1>y2) {
-            for(int k=y1-1; k>y2; k--) {
-                if(board.getPiece(x1, k)!=null) return MoveResults.INVALID;
+        else if(r1==r2 && c1>c2) {
+            for(int k=c1-1; k>c2; k--) {
+                if(board.getPiece(r1, k)!=null) return MoveResults.INVALID;
             }
-            return makeMoveResults(x1,y1,x2,y2,board);
+            validMove = true;
         }
 
-        return MoveResults.INVALID;
+        return (validMove) ? makeMoveResults(r1,c1,r2,c2,board) : MoveResults.INVALID;
     }
 }
